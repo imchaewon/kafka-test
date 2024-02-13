@@ -17,6 +17,7 @@ public class CustomProducer {
 
 	@PostConstruct
 	public void build(){
+		System.out.println("producer build.....");
 		Properties properties = new Properties();
 		properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getBootstrapServers());
 		properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, config.getProducer().getKeySerializer());

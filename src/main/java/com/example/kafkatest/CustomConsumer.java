@@ -23,7 +23,7 @@ public class CustomConsumer {
 
 	@PostConstruct
 	public void build(){
-		System.out.println("ddd");
+		System.out.println("consumer build.....");
 		Properties properties = new Properties();
 		properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getBootstrapServers());
 		properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, config.getConsumer().getGroupId());
@@ -35,7 +35,8 @@ public class CustomConsumer {
 		consumer = new KafkaConsumer<>(properties);
 	}
 
-	@KafkaListener(topics = "${spring.kafka.template.default-topic}")
+//	@KafkaListener(topics = "${spring.kafka.template.default-topic}")
+	@KafkaListener(topics = {"quickstart-events", "new-topic"})
 	public void consume(@Header(KafkaHeaders.RECEIVED_TOPIC) String topic, @Payload String payload){
 		log.info("CONSUME TOPIC : "+topic);
 		log.info("CONSUME PAYLOAD : "+payload);
