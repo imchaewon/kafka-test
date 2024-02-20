@@ -5,6 +5,7 @@ spring:
   application:
     name: third-point
   kafka:
+    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
     consumer:
       group-id: my-test
       enable-auto-commit: true
@@ -17,7 +18,6 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     template:
       default-topic: quickstart-events
-    bootstrap-servers: localhost:9092
   zipkin:
     sender:
       type: kafka
